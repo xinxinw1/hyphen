@@ -73,7 +73,7 @@ class HyphenForm extends React.Component {
   }
 
   handleClick() {
-    fetch("/api/hyphenate", {
+    fetch("api/hyphenate", {
       method: 'post',
       headers: {
         'Accept': 'application/json',
