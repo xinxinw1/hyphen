@@ -31,5 +31,11 @@ app.post('/api/hyphenate', asyncMiddleware(async (req, res, next) => {
   res.json({text: hyphenateText(req.body.text)});
 }));
 
+app.use((req, res) => {
+  console.log("404 Page Not Found: " + req.method + " " + req.url);
+  res.status(404);
+  res.render('404');
+});
+
 app.listen(app.get('port'), app.get('hostname'), () =>
   console.log('Listening on port ' + app.get('port') + '!'));
