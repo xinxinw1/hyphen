@@ -22,7 +22,7 @@ const hyphenator = hyphenopoly.config({
 app.set('port', process.env.PORT || 8080);
 app.set('hostname', process.env.HOSTNAME);
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 
