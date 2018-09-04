@@ -93,32 +93,30 @@ class HyphenForm extends React.Component {
   }
   
   render() {
-    return e('div', { id: "hyphen-form-inner" },
-      e(
+    return e('tr', { id: "hyphen-form-inner" },
+      e('td', { key: '1' }, e(
         'textarea',
         {
           rows: 50,
-          cols: 100,
           value: this.state.inputText,
           onChange: ev => this.setState({
             inputText: ev.target.value,
             outputText: this.state.outputText
           })
         }
-      ),
-      e(
+      )),
+      e('td', { className: "shrink", key: '2' }, e(
         'button',
         { onClick: () => this.handleClick() },
-        'Hyphenate ->'
-      ),
-      e(
+        'Hyphenate'
+      )),
+      e('td', { key: '3' }, e(
         'textarea',
         {
           rows: 50,
-          cols: 100,
           value: this.state.outputText
         }
-      )
+      ))
     );
   }
 }

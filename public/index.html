@@ -3,17 +3,23 @@
   <head>
     <title>Hypenation Server</title>
     <style>
+      body {margin: 10px;}
+      a:link {color: #005EC8;}
+      a:visited {color: #005EC8;}
+      h1 {font-size: 20px; font-weight: bold; margin: 0; margin-bottom: 10px;}
+      table { width: 100%; }
+      textarea { width: 100%; }
+      .shrink { width: 1px; white-space: nowrap; }
+      .max-width { width: 100%; }
       #hyphen-form-inner * { vertical-align: middle; }
       button { margin: 10px; font-size: 20px; font-weight: bold; }
     </style>
   </head>
 
   <body>
-    <h1>Hyphenation Server</h1>
+    <h1>Hyphenation Server | <a href="https://github.com/xinxinw1/hyphen">Github</a></h1>
 
-    <p><a href="https://github.com/xinxinw1/hyphen">https://github.com/xinxinw1/hyphen</a></p>
-
-    <div id="hyphen-form"></div>
+    <table><tbody id="hyphen-form"></tbody></table>
 
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
