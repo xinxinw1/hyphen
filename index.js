@@ -2,6 +2,7 @@
 
 const hyphenopoly = require("hyphenopoly");
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 
 const asyncMiddleware = fn =>
@@ -12,15 +13,23 @@ const asyncMiddleware = fn =>
 
 const hyphenator = hyphenopoly.config({
     "require": ["de", "en-us"],
-    "hyphen": "•",
-    "exceptions": {
+    "hyphen": "-",
+    /*"exceptions": {
         "en-us": "en-han-ces"
-    }
+    }*/
 });
+
+app.set('port', process.env.PORT || 8080);
+app.set('hostname', process.env.HOSTNAME);
 
 app.use(express.static('public'));
 
-app.get('/api/hyphenate', asyncMiddleware(async (req, res, next) =>
+app.use(bodyParser.json());
+
+app.post('/api/hyphenate', asyncMiddleware(async (req, res, next) => {
   const hyphenateText = await hyphenator.get("en-us");
-  res.json({text: hyphenateText(text)});
+  res.json({text: hyphenateText(req.body.text)});
 }));
+
+app.listen(app.get('port'), app.get('hostname'), () =>
+  console.log('Listening on port ' + app.get('port') + '!'));
